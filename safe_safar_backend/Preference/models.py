@@ -2,10 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-# Create your models here.
-class Customer(User):
-    community_score = models.FloatField()
-
 
 class CustomerPreferenceAnswer(models.Model):
     user = models.ForeignKey("Customer", on_delete=models.CASCADE)
