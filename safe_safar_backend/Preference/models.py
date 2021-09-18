@@ -13,8 +13,22 @@ class CustomerPreferenceAnswer(models.Model):
 
 
 class PreferenceQuestion(models.Model):
+
+    BOOL = 'bool'
+    CHECK = 'check'
+    DROP_DOWN = 'drop down'
+
+    TYPE_CHOICES = (
+        (
+            (BOOL, 'bool'),
+            (CHECK, 'check'),
+            (DROP_DOWN, 'drop_down')
+        )
+    )
+
     question = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=DROP_DOWN)
 
 
 class PreferenceAnswer(models.Model):
