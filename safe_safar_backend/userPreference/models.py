@@ -8,7 +8,7 @@ class Customer(User):
 
 
 class CustomerPreferenceAnswer(models.Model):
-    user = models.ForeignKey("User", on_delete=models.CASCADE)
+    user = models.ForeignKey("Customer", on_delete=models.CASCADE)
     preference_answers = models.ManyToManyField("PreferenceAnswer")
 
 
