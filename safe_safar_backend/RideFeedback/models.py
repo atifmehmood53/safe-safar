@@ -19,7 +19,7 @@ class CustomerSeat(models.Model):
 
 
 class CustomerSeats(models.Model):
-    customers = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     seats = models.ManyToManyField(Seat, through=CustomerSeat)
 
 
@@ -43,3 +43,9 @@ class PalFeedback(models.Model):
     class Meta:
         unique_together = ("customer_seat", "pal_seat")
 
+
+class CustomersMatchScore(models.Model):
+    pal1 = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    pal2 = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='pal2')
+    score1 = models.DecimalField(max_length=10)  # pal 1 scores pal 2
+    score2 = models.DecimalField(max_length=10)  # pal 2 scores pal 1
