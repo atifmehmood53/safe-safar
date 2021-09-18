@@ -2,30 +2,30 @@ from django.db import models
 
 
 # Create your models here.
-from safe_safar_backend.Preference.models import Customer
-
-
 class Ride(models.Model):
     name = models.CharField(max_length=10)
 
 
 class Seat(models.Model):
-    ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
+    ride = models.ForeignKey("Ride", on_delete=models.CASCADE)
     seat_number = models.CharField(max_length=10)
 
 
-class CustomerSeat(models.Model):
-    pass
+class Booking(models.Model):
+    customer = models.ForeignKey("Preference.Customer", on_delete=models.CASCADE)
+    seat = models.ForeignKey("Seat", on_delete=models.CASCADE)
 
 
-class CustomerSeats(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    seats = models.ManyToManyField(Seat, through=CustomerSeat)
+class CustomersMatchScore(models.Model):
+    pal1 = models.ForeignKey("Preference.Customer", on_delete=models.CASCADE)
+    pal2 = models.ForeignKey("Preference.Customer", on_delete=models.CASCADE, related_name='pal2')
+    score1 = models.DecimalField(decimal_places=3, max_digits=7)  # pal 1 scores pal 2
+    score2 = models.DecimalField(decimal_places=3, max_digits=7)  # pal 2 scores pal 1
 
 
 class PalFeedback(models.Model):
-    customer_seat = models.ForeignKey(CustomerSeat, on_delete=models.CASCADE)
-    pal_seat = models.ForeignKey(CustomerSeats, on_delete=models.CASCADE, related_name='pal_seats')
+    booking = models.ForeignKey("Booking", on_delete=models.CASCADE)
+    pal_booking = models.ForeignKey("Booking", on_delete=models.CASCADE, related_name='pal_booking')
 
     NEUTRAL = 'neutral'
     DOWN = 'down'
@@ -41,11 +41,4 @@ class PalFeedback(models.Model):
     vote = models.CharField(max_length=10, choices=VOTE_CHOICES, default=NEUTRAL)
 
     class Meta:
-        unique_together = ("customer_seat", "pal_seat")
-
-
-class CustomersMatchScore(models.Model):
-    pal1 = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    pal2 = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='pal2')
-    score1 = models.DecimalField(max_length=10)  # pal 1 scores pal 2
-    score2 = models.DecimalField(max_length=10)  # pal 2 scores pal 1
+        unique_together = ("booking", "pal_booking")

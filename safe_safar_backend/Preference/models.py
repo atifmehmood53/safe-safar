@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class Customer(User):
     community_score = models.FloatField()
+    seats = models.ManyToManyField("RideFeedback.Seat", through="RideFeedback.Booking")
 
 
 class CustomerPreferenceAnswer(models.Model):
