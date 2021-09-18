@@ -7,7 +7,7 @@ class Ride(models.Model):
     name = models.CharField(max_length=10)
 
 
-class UserRide(models.Model):
+class CustomerRide(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
     seat_number = models.CharField(max_length=10)
@@ -17,8 +17,8 @@ class UserRide(models.Model):
 
 
 class RidePalFeedback(models.Model):
-    user_ride = models.ForeignKey(UserRide, on_delete=models.CASCADE)
-    pal_ride = models.ForeignKey(UserRide, on_delete=models.CASCADE, related_name='pal_rides')
+    user_ride = models.ForeignKey(CustomerRide, on_delete=models.CASCADE)
+    pal_ride = models.ForeignKey(CustomerRide, on_delete=models.CASCADE, related_name='pal_rides')
 
     NEUTRAL = 'neutral'
     DOWN = 'down'
