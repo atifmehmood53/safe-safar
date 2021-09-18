@@ -2,14 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-
 class CustomerPreferenceAnswer(models.Model):
-    user = models.ForeignKey("Customer", on_delete=models.CASCADE)
+    user = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
     preference_answers = models.ManyToManyField("PreferenceAnswer")
 
 
 class PreferenceQuestion(models.Model):
-
     BOOL = 'bool'
     CHECK = 'check'
     DROP_DOWN = 'drop down'
