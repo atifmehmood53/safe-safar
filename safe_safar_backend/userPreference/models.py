@@ -3,11 +3,11 @@ from django.db import models
 
 
 # Create your models here.
-class User(User):
+class Customer(User):
     community_score = models.FloatField()
 
 
-class UserPreferenceAnswer(models.Model):
+class CustomerPreferenceAnswer(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     preference_answers = models.ManyToManyField("PreferenceAnswer")
 
