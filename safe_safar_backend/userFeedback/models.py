@@ -4,18 +4,21 @@ from django.db import models
 
 # Create your models here.
 class Ride(models.Model):
-    pass
+    name = models.CharField(max_length=10)
 
 
 class UserRide(models.Model):
-    user = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
-    ride = models.ForeignKey(Ride, unique=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ride = models.ForeignKey(Ride, on_delete=models.CASCADE)
     seat_number = models.CharField(max_length=10)
+
+    class Meta:
+        unique_together = ("user", "ride")
 
 
 class RidePalFeedback(models.Model):
     user_ride = models.ForeignKey(UserRide, on_delete=models.CASCADE)
-    pal_ride = models.ForeignKey(UserRide, on_delete=models.CASCADE)
+    pal_ride = models.ForeignKey(UserRide, on_delete=models.CASCADE, related_name='pal_rides')
 
     NEUTRAL = 'neutral'
     DOWN = 'down'
