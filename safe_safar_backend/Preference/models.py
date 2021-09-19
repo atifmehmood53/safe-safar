@@ -19,8 +19,8 @@ class PreferenceQuestion(models.Model):
         )
     )
 
-    question = models.CharField(max_length=20)
-    description = models.CharField(max_length=50)
+    question = models.CharField(max_length=250)
+    description = models.CharField(max_length=250)
     type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=DROP_DOWN)
 
     def serialize(self):
