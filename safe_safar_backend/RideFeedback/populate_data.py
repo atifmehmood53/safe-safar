@@ -1,5 +1,5 @@
-import Customer.models
 
+import Customer.models
 import RideFeedback.models
 
 Customer = Customer.models.Customer

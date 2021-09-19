@@ -3,3 +3,4 @@ djangorestframework
 pygments
 markdown
 django-filter
+drf-writable-nested
