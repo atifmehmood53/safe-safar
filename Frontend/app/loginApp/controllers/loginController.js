@@ -4,9 +4,11 @@ appModule.controller("LoginController", [
       $scope.username = '';
       $scope.password = '';
 
+      $scope.setSideBarState(true);
 
       $scope.login = function(){
         $location.path( "/preferences" )
+        $scope.setSideBarState(false);
       }    
     }
   ]);

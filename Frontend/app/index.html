@@ -11,10 +11,10 @@
 </head>
 
 <body ng-controller="AppController">
-    <button class="openbtn" ng-click="openNav()">&#9776</button>
-    <div id="sidebar" class="sidebar">
+    <button class="openbtn" ng-hide="hideSideBar" ng-click="openNav()">&#9776</button>
+    <div id="sidebar" class="sidebar shadow-lg brand-background text-white">
         <div class="p-2">
-            <div class="text-end"><i class="bi-x-lg h2" ng-click="closeNav()"></i></div>
+            <div class="text-end"><i class="bi-x-lg h5" ng-click="closeNav()"></i></div>
         </div>
         <div class="row">
             <div class="col-3 px-4">
@@ -26,22 +26,24 @@
                 </div>
                 <div class="progress">
                     <div class="progress-bar-striped progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="15" aria-valuemin="0"
-                        aria-valuemax="100">75%</div>
+                        aria-valuemax="100"></div>
 
                 </div>
             </div>
             <div class="px-4 h5">
-                <div class="text-muted mb-4 mt-4 cursor-pointer">Your Trips</div>
+                <div class="mb-4 mt-4 cursor-pointer" ng-click="navigateToState('feedback')">Rate Your Ongoing Trip</div>
                 <hr>
-                <div class="text-muted cursor-pointer">Wallet</div>
+                <div class="cursor-pointer">Wallet</div>
                 <hr>
-                <div class="text-muted cursor-pointer">Preferences</div>
+                <div class="cursor-pointer" ng-click="navigateToState('preferences')">Preferences</div>
                 <hr>
-                <div class="text-muted cursor-pointer">Packages</div>
+                <div class="cursor-pointer">Packages</div>
                 <hr>
-                <div class="text-muted cursor-pointer">Settings</div>
+                <div class="cursor-pointer">Settings</div>
                 <hr>
-                <div class="text-muted cursor-pointer">Help</div>
+                <div class="cursor-pointer">Help</div>
+                <hr>
+                <div class="cursor-pointer" ng-click="navigateToState('login')">Logout</div>
             </div>
         </div>
     </div>
@@ -60,5 +62,6 @@
 <script src="./loginApp/controllers/loginController.js"></script>
 <script src="./controllers/appController.js"></script>
 <script src="./preferences/controllers/preferencesController.js"></script>
+<script src="./feedback/controllers/feedbackController.js"></script>
 
 </html>

@@ -1,7 +1,29 @@
 appModule.controller("AppController", [
-  "$scope",
-  function($scope) {
-  
+  "$scope", "$location",
+  function($scope, $location) {
+    $scope.hideSideBar = false;
+
+    $scope.setSideBarState = function(shouldShow) {
+      $scope.hideSideBar = shouldShow;
+    }
+
+    $scope.navigateToState = function(state) {
+      if (state === 'feedback'){
+        $location.path( "/feedback" )
+      }else if (state === 'preferences'){
+        $location.path( "/preferences" )
+      }
+      else if (state === 'home'){
+        $location.path( "/home" )
+        $scope.hideSideBar = false;
+      }
+      else if (state === 'login'){
+        $location.path( "/" )
+        $scope.hideSideBar = true;
+      }
+      $scope.closeNav()
+    }
+
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     $scope.openNav = function() {
       document.getElementById("sidebar").style.width = "500px";

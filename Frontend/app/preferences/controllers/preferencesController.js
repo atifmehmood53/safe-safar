@@ -1,23 +1,38 @@
 appModule.controller("preferencesController", [
-    "$scope", "$location",
-    function($scope, $location) {
-      $scope.preferenceFields = [
-        {
-          question: "Radio asgasga sashas asahsa sashas asgas asgasa sasgas asgas asgas asgasa s",
-          type: "bool",
-          options: [{value: "yes", id: "asasas"}, {value: "no", id: "assaassa"}]
-        },
-        {
-          question: "Radio asgasga sashas asahsa sashas asgas asgasa sasgas asgas asgas asgasa s",
-          type: "check",
-          options: [{value: "yes", id: "asasas"}, {value: "no", id: "assaassa"}]
-        },
-        {
-          question: "Radio asgasga sashas asahsa sashas asgas asgasa sasgas asgas asgas asgasa s",
-          type: "dropdown",
-          options: [{value: "yes", id: "asasas"}, {value: "no", id: "assaassa"}]
-        },
-      ]
+    "$scope", "$location", "$timeout", 'userPreferenceService',
+    function($scope, $location, $timeout, userPreferenceService) {
+      $scope.fetchingPreferences = true;
+      $scope.preferenceFields = []
+
+      $scope.fetchPreferencesQuestions = function(){
+        $scope.fetchingPreferences = true;
+        userPreferenceService.fetchPreferencesQuestions(function(data){
+          $scope.preferenceFields = data;
+          $scope.fetchingPreferences = false;
+        },function(){
+          $scope.fetchingPreferences = false;
+        })
+      }
+  
+  
+      $scope.submitPreferences = function(){
+        $scope.submittingPrefences = true;
+        
+        feedbackService.savePreferences({
+          answers: $scope.preferenceFields.map(field => field.value)
+        },function(){
+          // success
+          $scope.submittingPrefences = false; 
+          $location.path( "/home" )
+        }, function(){
+          //error 
+          $scope.submittingPrefences = false;   
+        })
+        $timeout(function(){
+          $scope.submittingPrefences = false;
+          $location.path( "/home" )
+        }, 5000)
+      }
     }
   ]);
   
