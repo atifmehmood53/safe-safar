@@ -6,6 +6,7 @@ Customer = Customer.models.Customer
 Seat = RideFeedback.models.Seat
 Ride = RideFeedback.models.Ride
 PalFeedback = RideFeedback.models.PalFeedback
+Booking = RideFeedback.models.Booking
 
 
 def populate():
@@ -24,12 +25,12 @@ def populate():
     customer_5 = Customer.objects.create(username='c5', community_score=1.0)
     customer_6 = Customer.objects.create(username='c6', community_score=1.0)
 
-    booking_1 = RideFeedback.models.Booking.objects.create(customer=customer_1, seat=seat_1a)
-    booking_2 = RideFeedback.models.Booking.objects.create(customer=customer_2, seat=seat_1b)
-    booking_3 = RideFeedback.models.Booking.objects.create(customer=customer_3, seat=seat_1c)
-    booking_4 = RideFeedback.models.Booking.objects.create(customer=customer_4, seat=seat_2a)
-    booking_5 = RideFeedback.models.Booking.objects.create(customer=customer_5, seat=seat_2b)
-    booking_6 = RideFeedback.models.Booking.objects.create(customer=customer_6, seat=seat_2c)
+    booking_1 = Booking.objects.create(customer=customer_1, seat=seat_1a)
+    booking_2 = Booking.objects.create(customer=customer_2, seat=seat_1b)
+    booking_3 = Booking.objects.create(customer=customer_3, seat=seat_1c)
+    booking_4 = Booking.objects.create(customer=customer_4, seat=seat_2a)
+    booking_5 = Booking.objects.create(customer=customer_5, seat=seat_2b)
+    booking_6 = Booking.objects.create(customer=customer_6, seat=seat_2c)
 
     booking_1.provide_feedback_to_booking(booking_2, PalFeedback.DOWN)
     booking_3.provide_feedback_to_booking(booking_2, PalFeedback.DOWN)

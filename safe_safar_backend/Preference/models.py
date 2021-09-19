@@ -3,7 +3,7 @@ from django.db import models
 
 
 class CustomerPreferenceAnswer(models.Model):
-    user = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
+    customer = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
     preference_answers = models.ManyToManyField("PreferenceAnswer")
 
 
