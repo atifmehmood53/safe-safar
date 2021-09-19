@@ -4,3 +4,4 @@ pygments
 markdown
 django-filter
 drf-writable-nested
+django-cors-headers 
