@@ -1,9 +1,10 @@
+
 from django.contrib.auth.models import User
 from django.db import models
 
 
 class Customer(User):
-    community_score = models.FloatField()
+    community_score = models.FloatField(default=0.0)
     seats = models.ManyToManyField("RideFeedback.Seat", through="RideFeedback.Booking")
 
     def update_community_score(self, all_pfs):

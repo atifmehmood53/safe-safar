@@ -1,11 +1,10 @@
+from django.contrib.auth import admin
 from django.contrib.auth.models import User
 from django.db import models
-
 
 class CustomerPreferenceAnswer(models.Model):
     customer = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
     preference_answers = models.ManyToManyField("PreferenceAnswer")
-
 
 class PreferenceQuestion(models.Model):
     BOOL = 'bool'
@@ -31,3 +30,6 @@ class PreferenceAnswer(models.Model):
 
     class Meta:
         unique_together = ['preference_question', 'answer']
+
+
+# admin.site.register(CustomerPreferenceAnswer, CustomerPreferenceAnswer)
