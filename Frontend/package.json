@@ -1,0 +1,27 @@
+{
+    "name": "reservation-calendar",
+    "version": "1.0.0",
+    "description": "This project is completed as a Job hiring task of Stellic.",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "npm run copy-libs",
+        "update-deps": "npm update",
+        "postupdate-deps": "npm run copy-libs",
+        "copy-libs": "cpx \"node_modules/{angular,angular-*,bootstrap/dist,angular-route/}/**/*\" app/lib -C",
+        "prestart": "npm install",
+        "start": "http-server ./app -p 9000 -c-1 -o ",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Atif Mehmood",
+    "license": "ISC",
+    "dependencies": {
+        "angular": "^1.4.14",
+        "angular-route": "^1.4.x",
+        "bootstrap": "^5.1.1",
+        "bootstrap-icons": "^1.5.0"
+    },
+    "devDependencies": {
+        "cpx": "^1.5.0",
+        "http-server": "^0.12.3"
+    }
+}
