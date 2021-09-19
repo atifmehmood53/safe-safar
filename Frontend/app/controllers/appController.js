@@ -9,6 +9,7 @@ appModule.controller("AppController", [
 
 
     $scope.showSuccessMessage = function(message){
+      console.log(message)
       $scope.message = message;
       $timeout(function(){
         $scope.message = ""

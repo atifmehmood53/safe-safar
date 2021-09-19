@@ -27,7 +27,6 @@ appModule.controller("feedbackController", [
       }
 
       $scope.changeVote = function(vote, seatNumber){
-        console.log("seat", vote, seatNumber)
         if ($scope.selectedVotes[seatNumber] == vote){
           delete $scope.selectedVotes[seatNumber];
         }else{
@@ -49,6 +48,7 @@ appModule.controller("feedbackController", [
         feedbackService.submitFeedBack(data, function(){
           // success 
           $scope.showSuccessMessage("Your feedback was saved sucessfully!")
+          $location.path( "/home" )
         }, function(){
 
         })
