@@ -4,6 +4,9 @@ from django.urls import path, include
 # from .views import ListCreateCustomerPreferenceAnswer
 import Preference.views
 
+# from safe_safar_backend.Preference.views import ListCreateCustomerPreferenceAnswer
+from Preference.views import ListCreateCustomerPreferenceAnswer
+
 app_name = "Preference"
 
 urlpatterns = [

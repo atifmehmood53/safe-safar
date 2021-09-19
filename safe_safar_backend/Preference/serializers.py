@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from drf_writable_nested import WritableNestedModelSerializer
 from rest_framework import serializers
 
 from .models import CustomerPreferenceAnswer, PreferenceQuestion, PreferenceAnswer
