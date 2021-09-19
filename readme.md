@@ -7,7 +7,7 @@
 - [Run the app](#-run-the-app)
 - [Project structure](#-project-structure)
 - [License](#-license)
-- [Authors](#-Authors)
+- [Authors](#-authors)
 
 
 ## 📋 Dependencies
@@ -87,7 +87,7 @@ $ pip3 install -r requirements.txt
 
 Open source.
 
-## Authors
+## <a name="-authors"></a> Authors
 - Atif Mehmood
 - Noor Ullah Farid
 - Taban Shaukat
