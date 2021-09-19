@@ -9,7 +9,7 @@ PalFeedback = RideFeedback.models.PalFeedback
 Booking = RideFeedback.models.Booking
 
 
-def populate():
+def populateBooking():
     ride = Ride.objects.create(name='van1')
     seat_1 = Seat.objects.create(seat_number='1', ride=ride)
     seat_2 = Seat.objects.create(seat_number='2', ride=ride)
