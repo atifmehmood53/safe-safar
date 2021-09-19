@@ -7,20 +7,28 @@ from django.db import models
 class Ride(models.Model):
     name = models.CharField(max_length=10)
 
+    def __repr__(self):
+        return f"<Ride: {self.name}>"
+
 
 class Seat(models.Model):
     ride = models.ForeignKey("Ride", on_delete=models.CASCADE)
     seat_number = models.CharField(max_length=10)
 
+    def __repr__(self):
+        return f"<Seat {self.seat_number} of {self.ride}>"
+
 
 class Booking(models.Model):
     customer = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
     seat = models.ForeignKey("Seat", on_delete=models.CASCADE)
-    # datetime
+    timestamp = models.DateTimeField(auto_now=True)
 
     class Meta:
-        # TODO: Unique with datetime
-        unique_together = ("customer", "seat")
+        unique_together = ("customer", "seat", "timestamp")
+
+    def __repr__(self):
+        return f"<Booking: {self.customer}'s {self.seat.seat_number} on {self.timestamp.date()}>"
 
     def provide_feedback_to_booking(self, another_booking, vote):
         pf = PalFeedback.objects.create(booking=self, pal_booking=another_booking, vote=vote)
@@ -36,6 +44,9 @@ class CustomersMatchScore(models.Model):
     pal_1 = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE)
     pal_2 = models.ForeignKey("Customer.Customer", on_delete=models.CASCADE, related_name='pal2')
     score = models.DecimalField(decimal_places=3, max_digits=7, default=Decimal('1.000'))  # pal 1 scores pal 2
+
+    def __repr__(self):
+        return f"<CMS {self.pal_1} to {self.pal_1}: {self.score}>"
 
     def update_score_with_vote(self, vote):
         self.score *= Decimal(vote)
@@ -61,3 +72,6 @@ class PalFeedback(models.Model):
 
     class Meta:
         unique_together = ("booking", "pal_booking")
+
+    def __repr__(self):
+        return f"<PF: {self.booking.customer} to {self.pal_booking.customer}: {self.vote}>"
