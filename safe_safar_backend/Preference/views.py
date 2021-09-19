@@ -37,4 +37,4 @@ class GetPreferenceAnswer(generics.RetrieveAPIView):
 
 def get_all_questions_with_options(request):
     all_questions = [q.serialize() for q in PreferenceQuestion.objects.all()]
-    return JsonResponse(all_questions)
+    return JsonResponse(all_questions, safe=False)
