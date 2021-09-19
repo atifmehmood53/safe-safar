@@ -8,7 +8,7 @@ class CustomerPreferenceAnswerSerializer(WritableNestedModelSerializer):
     from CustomFields.CustomerPreferenceAnswerFields import CustomerField, PreferenceAnswerField
     from Customer.models import Customer
 
-    user = CustomerField(read_only=False,queryset=Customer.objects.all())
+    customer = CustomerField(read_only=False,queryset=Customer.objects.all())
     preference_answers = PreferenceAnswerField(read_only=False,queryset=PreferenceAnswer.objects.all())
     class Meta:
         model = CustomerPreferenceAnswer
