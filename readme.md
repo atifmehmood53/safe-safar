@@ -63,6 +63,8 @@ $ pip3 install -r requirements.txt
 	- **app**: app.js defines the main module of this app
 	- **index.html** it is the main page which is served on intital request
 
+- **Safe-safar-backend-Django**
+	- **Apps** : Customer, Preferences, RideFeedback
 
 ## 📄 License
 
