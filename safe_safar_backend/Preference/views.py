@@ -36,5 +36,6 @@ def submit_customer_selected_preferences(request):
 
 def get_customer_selected_preferences(request):
     customer_id = request.GET['customer_id']
-    answers = list(CustomerPreferenceAnswer.objects.filter(customer_id=customer_id).values_list('preference_answers', flat=True))
+    answers = list(
+        CustomerPreferenceAnswer.objects.filter(customer_id=customer_id).values_list('preference_answers', flat=True))
     return JsonResponse({'answers': answers})
