@@ -28,16 +28,14 @@ def get_all_questions_with_options(request):
 @parser_classes([JSONParser])
 def submit_customer_selected_preferences(request):
     customer_id = request.data['customer_id']
-    # print("request.body, request.data, customer_id")
-    # print(customer_id)
-    answer_ids = request.POST.getlist('answers')
+    answer_ids = request.data.getlist('answers')
     cpa, _ = CustomerPreferenceAnswer.objects.get_or_create(customer_id=customer_id)
     cpa.preference_answers.add(*answer_ids)
     return JsonResponse({'success': True})
 
+
 def get_customer_selected_preferences(request):
     customer_id = request.GET['customer_id']
-    print("customer_id")
-    print(request.GET)
-    answers = list(CustomerPreferenceAnswer.objects.filter(customer_id=customer_id).values_list('preference_answers', flat=True))
+    answers = list(
+        CustomerPreferenceAnswer.objects.filter(customer_id=customer_id).values_list('preference_answers', flat=True))
     return JsonResponse({'answers': answers})
