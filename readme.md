@@ -66,6 +66,8 @@ $ pip3 install -r requirements.txt
     - **loginApp**: frontend app which contains all partials, controllers, and services defined and used by this app in thier respective folders 
     - **preferences**: frontend app which contains all partials, controllers, and services defined and used by this app in thier respective folders 
 
+- **Safe-safar-backend-Django**
+	- **Apps** : Customer, Preferences, RideFeedback
 
 ## 📄 License
 
