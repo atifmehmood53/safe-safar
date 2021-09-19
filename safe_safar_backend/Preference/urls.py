@@ -5,7 +5,7 @@ from django.urls import path, include
 import Preference.views
 
 # from safe_safar_backend.Preference.views import ListCreateCustomerPreferenceAnswer
-from Preference.views import ListCreateCustomerPreferenceAnswer
+# from Preference.views import ListCreateCustomerPreferenceAnswer
 
 app_name = "Preference"
 
