@@ -50,33 +50,37 @@ $ pip3 install -r requirements.txt
     
     Run the app 
     ```
-    $ python3 manage.py runserver 9000
+    $ python3 manage.py runserver 10000
     ```
-5. you can access the web app on **localhost:8000**
-2. For frontend, change the directory to **Frontend**.
-3. Install dependencies.
+5. For frontend, change the directory to **Frontend**.
+6. Install dependencies.
 	```
 	$ npm i
 	```
-4. run the app.
+7. run the app.
 	```
 	$ npm start
 	```
-5. you can access the web app on **localhost:8000**
+8. you can access the web app on **localhost:9000**
 
 **if it doesn't run please make sure the http-server is installed properly or install it as a gloabal packege using the following command**
 
 ```npm install --global http-server```
 
 ## 📖 Project Structure
-- **Reservation-Calendar--Angular-JS**
-	- **controllers**: Contains all controllers 
-	- **services**: Contains all services
+- **Frontend**
+	- **controllers**: Contains all controllers which are shared 
+	- **services**: Contains all services which are shared 
 	- **lib**: Contains all static files js, css and images in their respective folders.
-	- **templates**: contains all partial html pages
+	- **templates**: contains all shared partial html pages 
 	- **app**: app.js defines the main module of this app
 	- **index.html** it is the main page which is served on intital request
+    - **feedback**: frontend app which contains all partials, controllers, and services defined and used by this app in thier respective folders 
+    - **loginApp**: frontend app which contains all partials, controllers, and services defined and used by this app in thier respective folders 
+    - **preferences**: frontend app which contains all partials, controllers, and services defined and used by this app in thier respective folders 
 
+- **Safe-safar-backend-Django**
+	- **Apps** : Customer, Preferences, RideFeedback
 
 ## 📄 License
 
