@@ -87,3 +87,12 @@ Open source.
 - Taban Shaukat
 - Reeba Aslam
 - Eraj Rizwan
+
+## <a name="-references"></a> References for UI
+
+- https://giphy.com/stickers/unibogazici-kilyos-sartepe-boazii-niversitesi-THgU4M44QOAiqjHGLu
+- https://www.figma.com/file/xaKJzfLhIcLSmLfxIxAvtQ/06.-Taxi-Booking---iOS-app-Design-(Community)
+- https://www.figma.com/file/ADXLi7pBXueSMLqQTM6VZY/BOLT-Community
+- https://www.figma.com/file/b7wbQ35JtpiR7q1rvrUg61/%F0%9F%93%8DKrakow-Map-Working-File-Community
+- https://www.figma.com/file/seBSMAw986OIoZRND7cef2/Taxi-service-app-Community
+- https://www.swvl.com/
