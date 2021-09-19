@@ -11,9 +11,9 @@ from .models import Booking, PalFeedback
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def submit_feedback(request):
-    from_booking = request.POST['booking_id']
-    to_booking = request.POST['pal_booking_id']
-    vote = request.POST['vote']
+    from_booking = request.data['booking_id']
+    to_booking = request.data['pal_booking_id']
+    vote = request.data['vote']
 
     booking = Booking.objects.get(id=from_booking)
     pal_booking = Booking.objects.get(id=to_booking)
