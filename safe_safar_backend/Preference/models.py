@@ -23,6 +23,15 @@ class PreferenceQuestion(models.Model):
     description = models.CharField(max_length=50)
     type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=DROP_DOWN)
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'question': self.question,
+            'description': self.description,
+            'type': self.type,
+            'options': [ans.serialize() for ans in self.preferenceanswer_set.all()]
+        }
+
 
 class PreferenceAnswer(models.Model):
     preference_question = models.ForeignKey("PreferenceQuestion", on_delete=models.CASCADE)
@@ -31,5 +40,8 @@ class PreferenceAnswer(models.Model):
     class Meta:
         unique_together = ['preference_question', 'answer']
 
-
-# admin.site.register(CustomerPreferenceAnswer, CustomerPreferenceAnswer)
+    def serialize(self):
+        return {
+            'id': self.id,
+            'answer': self.answer
+        }
