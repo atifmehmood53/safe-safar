@@ -8,6 +8,8 @@
 - [Project structure](#-project-structure)
 - [License](#-license)
 - [Authors](#-authors)
+- [Demos](#-demos)
+- [References](#-references)
 
 
 ## 📋 Dependencies
@@ -87,6 +89,10 @@ Open source.
 - Taban Shaukat
 - Reeba Aslam
 - Eraj Rizwan
+
+## <a name="-demos"></a> Demos
+- https://drive.google.com/drive/folders/1LzO5JZWAsj098LxkEp-YFFw7GQElIJyy
+- https://youtu.be/xA5mrjEp8vs
 
 ## <a name="-references"></a> References for UI
 
