@@ -1,10 +1,18 @@
 appModule.controller("AppController", [
-  "$scope", "$location",
-  function($scope, $location) {
+  "$scope", "$location", "$timeout",
+  function($scope, $location, $timeout) {
     $scope.hideSideBar = false;
 
     $scope.setSideBarState = function(shouldShow) {
       $scope.hideSideBar = shouldShow;
+    }
+
+
+    $scope.showSuccessMessage = function(message){
+      $scope.message = message;
+      $timeout(function(){
+        $scope.message = ""
+      }, 5000)
     }
 
     $scope.navigateToState = function(state) {

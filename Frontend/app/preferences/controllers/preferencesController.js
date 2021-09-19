@@ -8,7 +8,12 @@ appModule.controller("preferencesController", [
         $scope.fetchingPreferences = true;
         userPreferenceService.fetchPreferencesQuestions(function(data){
           $scope.preferenceFields = data;
-          $scope.fetchingPreferences = false;
+          userPreferenceService.fetchUserPreferences(function(data){
+            console.log(data)
+            $scope.fetchingPreferences = false;
+          }, function(){
+            $scope.fetchingPreferences = false;
+          })
         },function(){
           $scope.fetchingPreferences = false;
         })
@@ -18,21 +23,26 @@ appModule.controller("preferencesController", [
       $scope.submitPreferences = function(){
         $scope.submittingPrefences = true;
         
-        feedbackService.savePreferences({
-          answers: $scope.preferenceFields.map(field => field.value)
+        userPreferenceService.savePreferences({
+          customer_id: userId, 
+          answers: $scope.preferenceFields.map(function(field){
+            if (field && field.value && field.value.id){
+              return field.value.id
+            }
+          })
         },function(){
           // success
           $scope.submittingPrefences = false; 
+          $scope.showSuccessMessage("Your preferences were saved sucessfully!")
           $location.path( "/home" )
         }, function(){
           //error 
           $scope.submittingPrefences = false;   
         })
-        $timeout(function(){
-          $scope.submittingPrefences = false;
-          $location.path( "/home" )
-        }, 5000)
       }
+
+
+      $scope.fetchPreferencesQuestions();
     }
   ]);
   
