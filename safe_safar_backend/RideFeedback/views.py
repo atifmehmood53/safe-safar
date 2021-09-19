@@ -13,7 +13,7 @@ from .models import Booking, PalFeedback
 def submit_feedback(request):
     PalFeedback.objects.all().delete()
     customer_id = request.data['customer_id']
-    seat_votes = request.data.get_list('seat_votes')
+    seat_votes = request.data['seat_votes']
     customer_booking = Booking.objects.get(customer_id=customer_id)
     for seat_vote in seat_votes:
         pal_booking = Booking.objects.get(seat__seat_number=seat_vote['seat'])

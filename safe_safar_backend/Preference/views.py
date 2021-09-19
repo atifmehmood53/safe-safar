@@ -28,7 +28,7 @@ def get_all_questions_with_options(request):
 @parser_classes([JSONParser])
 def submit_customer_selected_preferences(request):
     customer_id = request.data['customer_id']
-    answer_ids = request.data.getlist('answers')
+    answer_ids = request.data['answers']
     cpa, _ = CustomerPreferenceAnswer.objects.get_or_create(customer_id=customer_id)
     cpa.preference_answers.add(*answer_ids)
     return JsonResponse({'success': True})

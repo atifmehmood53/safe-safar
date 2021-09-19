@@ -1,47 +1,47 @@
-calendarModule.service("userPreferenceService", [
+appModule.service("userPreferenceService", [
   "$http",
   function($http) {
-    let url = `${BASE_URL}/`
-    $scope.fetchPreferences = function(successCallBack, errorCallBack){
+    let userPreferenceService = this;
+  
+    userPreferenceService.fetchUserPreferences = function(successCallBack, errorCallBack){
+      let url = `${BASE_URL}/preference/retrieve_preferences?customer_id=${userId}`
+    
       $http.get(url).then(
         response => {
           if (response.status === 200) {
-            onSuccess(response.data);
-            this.fetchTennant();
+            successCallBack(response.data);
           } else {
-            onError(response.data);
-            this.fetchTennant();
+            errorCallBack(response.data);
           }
         },
         err => {
-          onError("Some unexpected Error occured");
-          this.fetchTennant();
+          errorCallBack("Some unexpected Error occured");
         }
       );
     }
 
-    $scope.fetchPreferencesQuestions = function(successCallBack, errorCallBack){
+    userPreferenceService.fetchPreferencesQuestions = function(successCallBack, errorCallBack){
+      let url = `${BASE_URL}/preference/preference_questions`
       $http.get(url).then(
         response => {
           if (response.status === 200) {
-            onSuccess(response.data);
-            this.fetchTennant();
+            successCallBack(response.data);
           } else {
             onError(response.data);
-            this.fetchTennant();
           }
         },
         err => {
-          onError("Some unexpected Error occured");
-          this.fetchTennant();
+          errorCallBack("Some unexpected Error occured");
         }
       );
     }
 
 
-    $scope.savePreferences = function(data, successCallBack, errorCallBack){
-      let url = `${BASE_URL}/`
-      $http.post(url, data).then(
+    userPreferenceService.savePreferences = function(data, successCallBack, errorCallBack){
+      let url = `${BASE_URL}/preference/submit_preferences`
+      $http.post(url, data, {
+        headers: postHeaders,
+      }).then(
         response => {
           if (response.status === 200) {
             if (typeof(successCallBack) === "function"){
