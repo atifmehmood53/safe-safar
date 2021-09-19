@@ -9,7 +9,7 @@ CustomerPreferenceAnswer = Preference.models.CustomerPreferenceAnswer
 
 
 
-def populatePreferences():
+def populate_preferences():
 
     genderQues = PreferenceQuestion.objects.create(
         question="Do you have any gender preference regarding the passenger who sits next to you?",

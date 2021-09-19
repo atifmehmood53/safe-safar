@@ -36,8 +36,22 @@ $ pip3 install -r requirements.txt
 	```
 4. run the app.
 	```
-	$ python manage.py makemigrations 
+    $ python manage.py makemigrations 
+    $ python manage.py migrate
+    $ python manage.py shell
 	```
+    Inside the shell to load sample data
+    ```
+    from Preference.populate_data import *
+    populate_preferences()
+    from RideFeedback.populate_data import *
+    populate_booking()
+    ```
+    
+    Run the app 
+    ```
+    $ python3 manage.py runserver 9000
+    ```
 5. you can access the web app on **localhost:8000**
 2. For frontend, change the directory to **Frontend**.
 3. Install dependencies.
