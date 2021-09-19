@@ -19,12 +19,6 @@
 - Django-Rest-Framwork: "^3.11"
 
 All the dependencies are mentioned in [package.json](https://github.com/am02464/safe-safar/blob/main/Frontend/package.json)  and  [requirements.txt](https://github.com/am02464/safe-safar/blob/main/Frontend/package.json)  files for frontend and backend respectively. You just have to run the following command in the root directory of frontend and backend respectively. 
-```
-$ npm i
-```
-```
-$ pip3 install -r requirements.txt
-```
 ## 🎉 Run the app 
 1. Change the current working directory to the location where you want the cloned directory to be made.
 	```
