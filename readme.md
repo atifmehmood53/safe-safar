@@ -1,9 +1,8 @@
+
 # Safe Safar
  
-The project was completed as a hiring task of Stellic Inc.
 
 ## Contents
-
 - [dependencies](#-dependencies)
 - [run the app](#-run-the-app)
 - [project structure](#-project-structure)
@@ -12,24 +11,35 @@ The project was completed as a hiring task of Stellic Inc.
 
 ## 📋 Dependencies
 - angular: "^1.4.14",
-- bootstrap: "^4.5.0"
+- bootstrap: "^5.0"
 - cpx: "^1.5.0",
 - http-server: "^0.12.3"
+- Django: "^3.2.7"
+- Django-Rest-Framwork: "^3.11"
 
-**This also requires a server to be runing. You can find its repo [here.](https://bitbucket.org/mpopatia/reservation-calendar/src/master/)**
-
-
-All the dependencies are mentioned in [package.json](https://github.com/am02464/Reservation-Calendar--Angular-JS/blob/master/package.json) file. You just have to run the following command.
+All the dependencies are mentioned in [package.json](https://github.com/am02464/safe-safar/blob/main/Frontend/package.json)  and  [requirements.txt](https://github.com/am02464/safe-safar/blob/main/Frontend/package.json)  files for frontend and backend respectively. You just have to run the following command in the root directory of frontend and backend respectively. 
 ```
 $ npm i
 ```
-
+```
+$ pip3 install -r requirements.txt
+```
 ## 🎉 Run the app 
 1. Change the current working directory to the location where you want the cloned directory to be made.
 	```
-	$ git clone https://github.com/am02464/Reservation-Calendar--Angular-JS.git
+	$ git clone https://github.com/am02464/safe-safar.git
 	```
-2. Change the directory to **Reservation-Calendar--Angular-JS**.
+2. For backend, change the directory to **Backend/safe_safar_backend**.
+3. Install dependencies.
+	```
+	$ pip3 install -r requirements.txt
+	```
+4. run the app.
+	```
+	$ python manage.py makemigrations 
+	```
+5. you can access the web app on **localhost:8000**
+2. For frontend, change the directory to **Frontend**.
 3. Install dependencies.
 	```
 	$ npm i
