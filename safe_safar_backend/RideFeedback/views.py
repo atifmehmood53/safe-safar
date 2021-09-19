@@ -11,14 +11,13 @@ from .models import Booking, PalFeedback
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def submit_feedback(request):
-    from_booking = request.data['booking_id']
-    to_booking = request.data['pal_booking_id']
-    vote = request.data['vote']
-
-    booking = Booking.objects.get(id=from_booking)
-    pal_booking = Booking.objects.get(id=to_booking)
-
-    booking.provide_feedback_to_booking(pal_booking, vote)
+    customer_id = request.data['customer_id']
+    seat_votes = request.data.get_list('seat_votes')
+    customer_booking = Booking.objects.get(customer_id=customer_id)
+    for seat_vote in seat_votes:
+        pal_booking = Booking.objects.get(seat__seat_number=seat_vote['seat'])
+        vote = seat_vote['vote']
+        customer_booking.provide_feedback_to_booking(pal_booking, vote)
 
     return JsonResponse({'success': True})
 
