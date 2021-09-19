@@ -21,7 +21,7 @@ class PreferenceQuestion(models.Model):
 
     question = models.CharField(max_length=250)
     description = models.CharField(max_length=250)
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=DROP_DOWN)
+    type = models.CharField(max_length=50, choices=TYPE_CHOICES, default=DROP_DOWN)
 
     def serialize(self):
         return {
@@ -35,7 +35,7 @@ class PreferenceQuestion(models.Model):
 
 class PreferenceAnswer(models.Model):
     preference_question = models.ForeignKey("PreferenceQuestion", on_delete=models.CASCADE)
-    answer = models.CharField(max_length=10)
+    answer = models.CharField(max_length=250)
 
     class Meta:
         unique_together = ['preference_question', 'answer']
