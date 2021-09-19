@@ -3,10 +3,11 @@
  
 
 ## Contents
-- [dependencies](#-dependencies)
-- [run the app](#-run-the-app)
-- [project structure](#-project-structure)
+- [Dependencies](#-dependencies)
+- [Run the app](#-run-the-app)
+- [Project structure](#-project-structure)
 - [License](#-license)
+- [Authors](#-Authors)
 
 
 ## 📋 Dependencies
@@ -85,3 +86,10 @@ $ pip3 install -r requirements.txt
 ## 📄 License
 
 Open source.
+
+## Authors
+- Atif Mehmood
+- Noor Ullah Farid
+- Taban Shaukat
+- Reeba Aslam
+- Eraj Rizwan
